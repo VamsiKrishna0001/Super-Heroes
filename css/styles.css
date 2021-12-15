@@ -1,0 +1,120 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+
+body{
+    box-sizing: border-box;
+    font-size: 62.5%;
+   
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    /* padding-top: 10px; */
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.3s;
+    margin: 10px;
+}
+
+.line{
+    /* display: block; */
+    margin: 5px 0;
+    width: 100vw;
+    border-bottom: 4px solid black;
+}
+
+.content{
+    /* box-sizing: border-box; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.fa-mask{
+    color: rgb(44, 151, 116);
+    font-size: 2rem;
+}
+
+h1{
+    color: rgb(119, 5, 5);
+    font-size: 2.2rem;
+}
+
+a .fa-heart{
+    font-size: 1.6rem;
+    color: royalblue;
+    border-radius: 1000%;
+}
+
+.search-box{
+    margin-top: 10px;
+    display: flex;
+    position: relative;
+    width: 320px;
+    height: 40px;
+    border-radius: 30px;
+    border: 2px solid rgb(231, 211, 211);
+    justify-content: center;
+    outline: none;
+    box-shadow: 5px 5px 5px black;
+}
+ #input{
+    width: 320px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.fa-search{
+    color: rgb(141, 50, 202);
+    cursor: pointer;
+}
+button{
+    position:absolute;
+    right: 2px;
+    top:5px;
+    background-color: white;
+    width: 30px;
+    height: 80%;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    outline: none;
+    border: none;
+}
+.heroes{
+    display: flex;
+    /* flex-direction: column; */
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+.heros{
+    margin: 5px;
+}
+/* .images{
+    width: 20rem;
+    height: 10rem;
+    margin: 20px 0  20px;
+    border-radius: 2px;
+    box-shadow: 0 0 1px rgb(65, 63, 63);
+} */
+
+p{
+    font-size: 1rem;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: coral;
+}
+
