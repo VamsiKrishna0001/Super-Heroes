@@ -4,21 +4,37 @@ let main = document.getElementsByClassName('content')[0];
 const input = document.getElementById('input');
 let search = document.getElementById('search');
 let fav = document.getElementsByClassName('fa-heart')[0];
+let home = document.getElementsByClassName('fa-mask')[0];
 let fav_container = document.getElementsByClassName('fav-container')[0];
 let favArr =[];
 let favName =[];
-let retVV = [];
+
+home.addEventListener('click',()=>{
+
+
+    var f_line = document.getElementsByClassName('F-line')[0];
+    f_line.setAttribute("style"," margin: 5px 0; width: 100vw;");
+})
+
 fav.addEventListener('click',favorites);
 var retV;
 function favorites(){
 
+    var styles = {
+         "margin": "5px 0",
+         "width": "100vw",
+         "border-bottom": "4px solid black"
+    };
     searchImg();
     main.style.display = 'none';
-    var border = document.createElement('div');
-    border.setAttribute('class','line');
-    fav_container.appendChild(border);
+    fav_container.style.display='flex';
+    var f_line = document.getElementsByClassName('F-line')[0];
+    f_line.setAttribute("style"," margin: 5px 0; width: 100vw; border-bottom: 4px solid black;");
     if(favArr.length == 0){
-       // console.log('yes');
+        if(fav_container.childNodes.length>3){
+            fav_container.childNodes[3].remove();
+        }
+       console.log('yes');
        var p = document.createElement('p');
        p.innerHTML = "You Have No Favorites";
        fav_container.appendChild(p);
@@ -64,7 +80,7 @@ function favorites(){
                 const info = document.createElement('p');
               
                 info.setAttribute("class",'info');
-                info.setAttribute("id",f);
+                info.setAttribute("id",i);
                 container.appendChild(info);
                 
                 const link = document.createElement('a');
@@ -76,6 +92,14 @@ function favorites(){
                 var fav_icon = document.createElement('i');
                 fav_icon.setAttribute("class",'fas fa-heart favrt');
                 span_icon.appendChild(fav_icon);
+                fav_icon.addEventListener('click',()=>{
+                  info.parentNode.parentNode.remove();  
+                })
+                search.addEventListener('click',()=>{
+                    heroes.remove();
+                    fav_container.style.display = 'none';
+                    main.style.display = 'flex';
+                })
 
             }
                 xhreq.open('get','https://www.superheroapi.com/api.php/2980995878784118/'+uniquefav[i],true);
@@ -85,26 +109,6 @@ function favorites(){
 
     }
 }
-
-// function ajax(i){
-  
-//     console.log( favArr[i]);
-//     var xhreq = new XMLHttpRequest();
-//         xhreq.open('get','https://www.superheroapi.com/api.php/2980995878784118/'+favArr[i],true);
-//         xhreq.send();
-//     //    var retV;
-//         xhreq.onload = ()=>{
-//             var resJson = JSON.parse(xhreq.response);
-//             console.log("resJson :"+JSON.parse(xhreq.response));
-           
-//            retV =  JSON.stringify(resJson);
-//            console.log("Retv :"+ retV);
-//            retVV.push(resJson);
-//           console.log(resJson);
-//         }
-//         console.log(retV);
-//         return retV;
-// }
 
 function searchImg(){
     console.log(input.value);
@@ -116,30 +120,8 @@ function searchImg(){
         main.appendChild(border);
     }
 }
-
-function goBack(hideContent,getsavedid,resJson){
-    hideContent.style.display ="none";
-    var otherCont = document.getElementsByClassName('individual-content')[0];
-    var back = document.createElement('h1');
-    back.innerHTML = "Back";
-    var cont = document.createElement("div");
-    cont.appendChild(back);
-    cont.setAttribute("class",'cont');
-    var contImg = document.createElement('img');
-    contImg.setAttribute('class','contImg');
-    var getid = getsavedid.getAttribute('id');
-    contImg.setAttribute('src',resJson.results[getid].image.url);
-    cont.appendChild(contImg);
-    otherCont.appendChild(cont);
-    back.addEventListener('click',()=>{
-        cont.remove();
-        hideContent.style.display='flex';
-    });
-
-} 
- 
 search.addEventListener('click',()=>{
-    
+    fav_container.display='none';
     console.log(main.childNodes);
     if(main.childNodes.length>2){
         console.log(main.childNodes);
@@ -203,7 +185,7 @@ search.addEventListener('click',()=>{
 
             // For Information
             info.addEventListener('click',()=>{
-                //Hide
+                // Hide
                 heroes.style.display ="none";
                 var otherCont = document.getElementsByClassName('individual-content')[0];
                 var back = document.createElement('h1');
@@ -357,13 +339,7 @@ search.addEventListener('click',()=>{
                     cont.remove();
                     heroes.style.display='flex';
                 })
-           })
-           
-           
-          
-           
-           
-           
+          })
         }
     }
     console.log(input.value);
