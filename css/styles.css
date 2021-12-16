@@ -93,7 +93,11 @@ button{
     display: flex;
     /* flex-direction: column; */
     flex-flow: wrap;
-    justify-content: space-around;
+    justify-content: center; 
+    gap: 10px;
+    gap: 10px 20px; /* row-gap column gap */
+    row-gap: 10px;
+    column-gap: 20px;
 }
 
 .heros{
@@ -107,6 +111,12 @@ button{
     box-shadow: 0 0 1px rgb(65, 63, 63);
 } */
 
+img{
+    width: 22rem;
+    height: 30rem;
+}
+
+
 p{
     font-size: 1rem;
     text-align: center;
@@ -118,3 +128,84 @@ a{
     color: coral;
 }
 
+.images span{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.favrt{
+    cursor: pointer;
+    color: rgb(90, 82, 5);
+    font-size: 2rem;
+}
+
+/* Information */
+
+.individual-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(206, 206, 206);
+   
+  }
+  .cont {
+    flex-wrap: wrap;
+    width: 600px;
+    justify-content: center;
+    background-color: rgb(2, 2, 1);
+  }
+  
+  .back {
+    display: block;
+    left: 0px;
+    color: crimson;
+  }
+  .M-name {
+    text-align: center;
+  }
+  
+  .contImg {
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    width: 300px;
+    height: 400px;
+  }
+  
+  .information {
+    margin: auto;
+    width: 70%;
+  }
+  
+  li {
+    display: flex;
+    color: aliceblue;
+    /* padding: 1px; */
+    margin: 15px auto;
+    flex-wrap: nowrap;
+    justify-content:start;
+    list-style-type: none;
+  }
+  
+  
+  details {
+      border-radius: 4px;
+      padding: .5em .5em 0;
+      
+  }
+  
+  details > summary {
+    padding: 1rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: rgb(44, 14, 44);
+    color: darkturquoise;
+  }
+  
+  
+  .d-content {
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+  }
+/* Information ends */
