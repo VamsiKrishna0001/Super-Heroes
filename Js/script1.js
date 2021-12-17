@@ -35,33 +35,15 @@ function favorites(){
 
     //f_line Border under the header section 
     var f_line = document.getElementsByClassName('F-line')[0];
-    f_line.setAttribute("style"," margin: 5px 0; width: 100vw; border-bottom: 4px solid black;");
+    f_line.setAttribute("style"," margin: 20px 0; width: 100vw; border-bottom: 4px solid black;");
 
     // To check whether the fav are added or not.
     if(favArr.length == 0){
     // To remove the repeated elements   
         if(fav_container.childNodes.length>3){
             fav_container.removeChild(fav_container.childNodes[3]);
-            fav_container.removeChild(fav_container.childNodes[3]);
         }
     
-    // To go back to the search page    
-        var back = document.createElement('h1');
-        var b_icon=document.createElement('i');
-        b_icon.setAttribute("class","fas fa-backward");
-        back.setAttribute('class','back');
-        back.appendChild(b_icon);
-        fav_container.appendChild(back);
-
-    // To remove elements after going to the search-page;    
-        back.addEventListener('click',()=>{
-                back.remove();
-                p.remove();
-        fav_container.style.display='none';
-        searchPage.style.display = 'flex';
-        });
-
-
         var p = document.createElement('p');
         p.innerHTML = "You Have No Favorites";
         fav_container.appendChild(p);
@@ -148,7 +130,8 @@ function favorites(){
                 var span_icon = document.createElement('span');
                 container.appendChild(span_icon);
                 var fav_icon = document.createElement('i');
-                fav_icon.setAttribute("class",'fas fa-heart favrt');
+                fav_icon.setAttribute("class",'fas fa-heart favrt favrt2');
+                fav_icon.style.color = '#f5a94c';
                 span_icon.appendChild(fav_icon);
 
             // for removing from favorites
@@ -171,25 +154,31 @@ function favorites(){
                     searchPage.style.display = 'flex';
                 });
 
+            //To redirect to the information page    
                 info.addEventListener('click',()=>{
-                    //Hide
+
+                //To Hide the favorites..
                     fav_container.style.display ="none";
                     var otherCont = document.getElementsByClassName('individual-content')[0];
                     var back = document.createElement('h1');
                     var b_icon=document.createElement('i');
                     b_icon.setAttribute("class","fas fa-backward");
                     back.setAttribute('class','back');
-                    // back.innerHTML = "Back";
                     back.appendChild(b_icon);
+
                     var cont = document.createElement("div");
                     cont.appendChild(back);
                     cont.setAttribute("class",'cont');
+
                     var contImg = document.createElement('img');
                     contImg.setAttribute('class','contImg');
                     var getid = info.getAttribute('id');
+                //To show the images     
                     contImg.setAttribute('src',resJson.image.url);
                     cont.appendChild(contImg);
                     otherCont.appendChild(cont);
+
+                //To show the name of the image    
                     var currName = resJson.name;
                     var S_name = document.createElement('h1');
                     S_name.innerHTML = currName;
@@ -198,17 +187,18 @@ function favorites(){
                     var S_info = document.createElement('div');
                     S_info.setAttribute("class","information");
                     cont.appendChild(S_info);
-                    //      POWERSTATS         
+
+                //      POWERSTATS         
                     var currPower = resJson.powerstats;
                     var details = document.createElement('details');
                     S_info.appendChild(details);
                     let currSmry = document.createElement('summary');
                     currSmry.innerHTML = "POWERSTATS";
                     details.appendChild(currSmry);
+
                     var pDiv = document.createElement('div');
                     pDiv.setAttribute("class","d-content");
                     details.appendChild(pDiv);
-                    //  var mainPwr = ["intelligence","strength","speed","durability","power","combat"];
                     var currPwr = ["Intelligence : ","Strength : ","Speed : ","Durability : ","Power: ","Combat : "];
                     var pLi1 = document.createElement('li');
                     pLi1.innerHTML="Intelligence :"+currPower.intelligence;
@@ -229,9 +219,8 @@ function favorites(){
                     pLi6.innerHTML=currPwr[5]+currPower.combat;
                     pDiv.appendChild(pLi6);
 
+                //          BIOGRAPHY 
                     var currBio = resJson.biography;
-
-                    //    BIOLOGY  
                     var details1 = document.createElement('details');
                     S_info.appendChild(details1);
                     let currSmry1 = document.createElement('summary');
@@ -260,8 +249,8 @@ function favorites(){
                     pLi6.innerHTML=currbiolg[5]+currBio.alignment;
                     bDiv.appendChild(pLi6);
 
+                //    APPEARANCE     
                     var curraprn = resJson.appearance;
-                    // Appearance     
                     var details2 = document.createElement('details');
                     S_info.appendChild(details2);
                     let currSmry2 = document.createElement('summary');
@@ -272,7 +261,7 @@ function favorites(){
                     details2.appendChild(aDiv);
                     var currAppr = ["Gender : ","Race : ","Height : ","Weight : ","Eye-Color : ","Hair-Color : "];
                     var pLi1 = document.createElement('li');
-                    pLi1.innerHTML="Intelligence :"+curraprn.gender;
+                    pLi1.innerHTML="Gender :"+curraprn.gender;
                     aDiv.appendChild(pLi1);
                     var pLi2 = document.createElement('li');
                     pLi2.innerHTML=currAppr[1]+curraprn.race;
@@ -289,7 +278,8 @@ function favorites(){
                     var pLi6 = document.createElement('li');
                     pLi6.innerHTML=currAppr[5]+curraprn["hair-color"];
                     aDiv.appendChild(pLi6);
-                    // WORk
+
+                //          WORK
                     var currWork = resJson.work;
                     var details3 = document.createElement('details');
                     S_info.appendChild(details3);
@@ -305,7 +295,8 @@ function favorites(){
                     var pLi2 = document.createElement('li');
                     pLi2.innerHTML="Base :"+currWork.base;
                     wDiv.appendChild(pLi2);
-                    //Connection
+
+                //          CONNECTION
                     var currConne = resJson.connections;
                     var details4 = document.createElement('details');
                     S_info.appendChild(details4);
@@ -321,7 +312,8 @@ function favorites(){
                     var pLi2 = document.createElement('li');
                     pLi2.innerHTML="Relatives :"+currConne.relatives;
                     cDiv.appendChild(pLi2);
-                    //  To go to searched page
+
+                //  To go to favorite page
                     back.addEventListener('click',()=>{
                         cont.remove();
                         fav_container.style.display='flex';
@@ -336,10 +328,12 @@ function favorites(){
     }
 }
 
+
 function searchImg(){
+
+//To go to home page    
     home.addEventListener('click',refreshPage);
-    console.log(input.value);
-    console.log(heading[0].getAttribute('style'));
+
     if(heading[0].getAttribute('style') == 'height: 100vh;'){
         heading[0].setAttribute('style','height: 10vh');
         const border = document.createElement('div');
@@ -347,14 +341,19 @@ function searchImg(){
         searchPage.appendChild(border);
     }
 }
+
+//To search the images from input name;
 search.addEventListener('click',()=>{
+
     fav_container.display='none';
-    console.log(searchPage.childNodes);
+
+//To remove duplcate elements ..     
     if(searchPage.childNodes.length>2){
         console.log(searchPage.childNodes);
         searchPage.childNodes[2].remove();
     }
 
+//Creating Heroes container to store them..    
     let heroes = document.createElement('div');
     heroes.setAttribute('class','heroes');
     searchPage.appendChild(heroes);
@@ -362,15 +361,30 @@ search.addEventListener('click',()=>{
 
     var xhreq = new XMLHttpRequest();
     xhreq.onload = ()=>{
+
         var resJson = JSON.parse(xhreq.response);
+        
         console.log(resJson);
+       if(resJson.response == "error"){
+        var p = document.createElement('p');
+        p.setAttribute("class","pError");
+        if(input.value == ''){
+            p.innerHTML ="You have not entered any name ";
+            heroes.appendChild(p);
+        }else{
+        p.innerHTML ="The "+ input.value +" you are searching is not found ";
+        heroes.appendChild(p);
+        }
+       }else{
+        
         for(var i=0;i<resJson.results.length;i++){
+
             var imageURL = resJson.results[i].image.url;
-         //   console.log(imageURL);
             const hero = document.createElement('div');
-             hero.setAttribute("class",'heros');
-             heroes.appendChild(hero);
-             //For images
+            hero.setAttribute("class",'heros');
+            heroes.appendChild(hero);
+
+        //For images
             var container =document.createElement('div');
             container.setAttribute("class",'images');
             hero.appendChild(container);
@@ -378,85 +392,85 @@ search.addEventListener('click',()=>{
             img.setAttribute("src",imageURL);
             img.setAttribute("alt","...");
             container.appendChild(img);
-            //for names
+
+        //for names
             const name = resJson.results[i].name;
             const p = document.createElement('p');
             p.innerHTML = name;
             container.appendChild(p);
-            // for info
+
+        // for info
             const info = document.createElement('p');
-            // const iId = resJson.results[i].id;
             info.setAttribute("class",'info');
             info.setAttribute("id",i);
             container.appendChild(info);
-           
             const link = document.createElement('a');
-            // link.setAttribute("href",'');
             link.innerHTML="About";
             info.appendChild(link);
+
+        // For Adding to favorites    
             var span_icon = document.createElement('span');
             container.appendChild(span_icon);
             var fav_icon = document.createElement('i');
             fav_icon.setAttribute("class",'fas fa-heart favrt');
             span_icon.appendChild(fav_icon);
+
             var getid = info.getAttribute('id');
             const iId = resJson.results[getid].id;
+
+        // To update the favorites that are removed from favorites ..    
             for(var n =0;n<MfavArr.length;n++){
                 if(MfavArr[n]== iId){
-                    console.log("loop :" + iId+" "+ MfavArr[n]);
-                    console.log(getid);
-                        document.getElementsByClassName('favrt')[getid].style.color='Red';
+                    document.getElementsByClassName('favrt')[getid].style.color='#f5a94c';
                 }
             }
-            // if(MfavArr.length != 0){
-            //     for(var n =0;n<MfavArr.length;n++){
-            //         if(MfavArr[n]== iId){
-                        // console.log("loop :" + iId+" "+ MfavArr[n]);
-                        // document.getElementsByClassName('favrt')[getid].style.color='White';
-                        // MfavArr.splice(n,1);
-            //         }
-            //     }
-            // }
             
-            // Favoritess Storing
+        // Favoritess Storing
             fav_icon.addEventListener('click',()=>{
-                console.log("Yes Clicked");
                 var getid = info.getAttribute('id');
                 const iId = resJson.results[getid].id;
-                document.getElementsByClassName('favrt')[getid].style.color='blue';
-                favArr.push(iId);
-                console.log(iId);
-            })
+                document.getElementsByClassName('favrt')[getid].style.color='#f5a94c';
+                favArr.push(iId); 
+            });
 
-            // For Information
+        // For Information
             info.addEventListener('click',()=>{
-                // Hide
+
+            // Hide
                 heroes.style.display ="none";
+    
                 var otherCont = document.getElementsByClassName('individual-content')[0];
                 var back = document.createElement('h1');
                 var b_icon=document.createElement('i');
+
+            // Back icon to go back    
                 b_icon.setAttribute("class","fas fa-backward");
                 back.setAttribute('class','back');
-                // back.innerHTML = "Back";
                 back.appendChild(b_icon);
+                
                 var cont = document.createElement("div");
                 cont.appendChild(back);
                 cont.setAttribute("class",'cont');
                 var contImg = document.createElement('img');
                 contImg.setAttribute('class','contImg');
                 var getid = info.getAttribute('id');
+
+            // Adding Images in information     
                 contImg.setAttribute('src',resJson.results[getid].image.url);
                 cont.appendChild(contImg);
                 otherCont.appendChild(cont);
                 var currName = resJson.results[getid].name;
                 var S_name = document.createElement('h1');
                 S_name.innerHTML = currName;
+
+            // Adding Names to the info page    
                 S_name.setAttribute("class","M-name");
                 cont.appendChild(S_name);
                 var S_info = document.createElement('div');
                 S_info.setAttribute("class","information");
                 cont.appendChild(S_info);
-            //      POWERSTATS         
+
+            //                  POWERSTATS         
                 var currPower = resJson.results[getid].powerstats;
                 var details = document.createElement('details');
                 S_info.appendChild(details);
@@ -466,7 +480,6 @@ search.addEventListener('click',()=>{
                 var pDiv = document.createElement('div');
                 pDiv.setAttribute("class","d-content");
                 details.appendChild(pDiv);
-              //  var mainPwr = ["intelligence","strength","speed","durability","power","combat"];
                 var currPwr = ["Intelligence : ","Strength : ","Speed : ","Durability : ","Power: ","Combat : "];
                 var pLi1 = document.createElement('li');
                 pLi1.innerHTML="Intelligence :"+currPower.intelligence;
@@ -487,9 +500,8 @@ search.addEventListener('click',()=>{
                 pLi6.innerHTML=currPwr[5]+currPower.combat;
                 pDiv.appendChild(pLi6);
 
+            //                  BIOGRAPHY  
                 var currBio = resJson.results[getid].biography;
-        
-            //    BIOLOGY  
                 var details1 = document.createElement('details');
                 S_info.appendChild(details1);
                 let currSmry1 = document.createElement('summary');
@@ -518,8 +530,8 @@ search.addEventListener('click',()=>{
                 pLi6.innerHTML=currbiolg[5]+currBio.alignment;
                 bDiv.appendChild(pLi6);
 
+            //                  APPEARANCE     
                 var curraprn = resJson.results[getid].appearance;
-           // Appearance     
                 var details2 = document.createElement('details');
                 S_info.appendChild(details2);
                 let currSmry2 = document.createElement('summary');
@@ -530,7 +542,7 @@ search.addEventListener('click',()=>{
                 details2.appendChild(aDiv);
                 var currAppr = ["Gender : ","Race : ","Height : ","Weight : ","Eye-Color : ","Hair-Color : "];
                 var pLi1 = document.createElement('li');
-                pLi1.innerHTML="Intelligence :"+curraprn.gender;
+                pLi1.innerHTML="Gender :"+curraprn.gender;
                 aDiv.appendChild(pLi1);
                 var pLi2 = document.createElement('li');
                 pLi2.innerHTML=currAppr[1]+curraprn.race;
@@ -547,9 +559,10 @@ search.addEventListener('click',()=>{
                 var pLi6 = document.createElement('li');
                 pLi6.innerHTML=currAppr[5]+curraprn["hair-color"];
                 aDiv.appendChild(pLi6);
-                // WORk
+
+            //                  WORK
                 var currWork = resJson.results[getid].work;
-                 var details3 = document.createElement('details');
+                var details3 = document.createElement('details');
                 S_info.appendChild(details3);
                 let currSmry3 = document.createElement('summary');
                 currSmry3.innerHTML = "WORK";
@@ -563,7 +576,8 @@ search.addEventListener('click',()=>{
                 var pLi2 = document.createElement('li');
                 pLi2.innerHTML="Base :"+currWork.base;
                 wDiv.appendChild(pLi2);
-                //Connection
+                
+            //                  CONNECTION
                 var currConne = resJson.results[getid].connections;
                 var details4 = document.createElement('details');
                 S_info.appendChild(details4);
@@ -579,16 +593,19 @@ search.addEventListener('click',()=>{
                 var pLi2 = document.createElement('li');
                 pLi2.innerHTML="Relatives :"+currConne.relatives;
                 cDiv.appendChild(pLi2);
-              //  To go to searched page
+            //  To go to searched page
                 back.addEventListener('click',()=>{
                     cont.remove();
                     heroes.style.display='flex';
-                })
-          })
+                });
+          });
         }
-    }
+       }
+    };
+
     console.log(input.value);
     xhreq.open('get','https://www.superheroapi.com/api.php/2980995878784118/search/'+input.value,true);
     xhreq.send();
 })
+
 
