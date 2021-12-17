@@ -1,21 +1,26 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 *{
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 
 body{
     box-sizing: border-box;
     font-size: 62.5%;
-   
+    /* background-image: url(/Images/GradientHunt_blackVLue.png); */
+    background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #051820, #11303a, #1d313a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #051820, #11303a, #1d313a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .header{
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
-    /* padding-top: 10px; */
     align-items: center;
     justify-content: center;
     transition-duration: 0.3s;
@@ -23,16 +28,13 @@ body{
 }
 
 .line{
-    /* display: block; */
-    margin: 5px 0;
+    margin: 20px 0;
     width: 100vw;
     border-bottom: 4px solid black;
 }
 
 
-
 .search-page{
-    /* box-sizing: border-box; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -46,20 +48,29 @@ body{
 }
 
 .fa-mask{
-    color: rgb(44, 151, 116);
+    color: rgb(22, 82, 22);
     font-size: 2rem;
+    cursor: pointer;
+    text-shadow: 0px 0px 6px rgb(7, 7, 7);
 }
 
 h1{
-    color: rgb(119, 5, 5);
-    font-size: 2.2rem;
+    color: #AAAAAA;
+    margin-top: 10px;
+    font-size: 2rem;
+    font-family: 'Shojumaru', cursive;
+    text-shadow: 0px 5px 2px rgb(179, 7, 7);
+    
 }
 
-a .fa-heart{
+h1 .fa-heart{
+   cursor: pointer;
+}
+/* a .fa-heart{
     font-size: 1.6rem;
     color: royalblue;
     border-radius: 1000%;
-}
+} */
 
 .search-box{
     margin-top: 10px;
@@ -71,7 +82,7 @@ a .fa-heart{
     border: 2px solid rgb(231, 211, 211);
     justify-content: center;
     outline: none;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 5px 5px 15px black;
 }
  #input{
     width: 320px;
@@ -81,6 +92,7 @@ a .fa-heart{
     border: none;
     outline: none;
     text-align: center;
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .fa-search{
@@ -101,35 +113,56 @@ button{
 }
 .heroes{
     display: flex;
-    /* flex-direction: column; */
     flex-flow: wrap;
     justify-content: center; 
-    gap: 10px;
-    gap: 10px 20px; /* row-gap column gap */
-    row-gap: 10px;
-    column-gap: 20px;
+    gap: 10px 20px; 
+}
+
+.pError{
+    margin-top: 10rem;
+    height: 200px;
+    width: 100vw;
+    font-size: 2rem;
+    font-family: 'Architects Daughter', cursive;
 }
 
 .heros{
     margin: 5px;
 }
-/* .images{
-    width: 20rem;
-    height: 10rem;
-    margin: 20px 0  20px;
-    border-radius: 2px;
-    box-shadow: 0 0 1px rgb(65, 63, 63);
-} */
 
 img{
     width: 22rem;
     height: 30rem;
+    border-radius: 2px;
+    box-shadow: 0px 0px 50px rgb(89, 93, 93);
 }
 
 
 p{
     font-size: 1rem;
     text-align: center;
+   
+}
+
+
+
+.search-page p{
+    font-family: 'Aclonica', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d3d3d3;
+}
+
+.info a{
+
+    font-weight: 500;
+    font-family: 'Gravitas One', cursive;
+    cursor: pointer;
+    color: #9e3f41;
+}
+
+.info a:hover{
+    color: rgb(29, 204, 29);
 }
 
 a{
@@ -146,8 +179,18 @@ a{
 
 .favrt{
     cursor: pointer;
-    color: rgb(90, 82, 5);
+    color: rgb(255, 255, 255);
+    transition: 1s;
+    
     font-size: 2rem;
+}
+
+.favrt:hover{
+    color:#f5a94c;
+}
+
+.favrt2:hover{
+    color:#e4e4e4;
 }
 
 /* Information */
@@ -156,7 +199,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(206, 206, 206);
+   /* background-color: rgb(206, 206, 206); */
    
   }
   .cont {
@@ -236,3 +279,17 @@ a{
     padding: 1rem 1.5rem;
   }
 /* Information ends */
+
+@media only screen and (max-width: 400px) {
+    
+    h1{
+        color: #AAAAAA;
+        margin-top: 10px;
+        font-size: 1.6rem;
+        font-family: 'Shojumaru', cursive;
+    }
+    img{
+        width: 20rem;
+        height: 28rem;
+    }
+  }
