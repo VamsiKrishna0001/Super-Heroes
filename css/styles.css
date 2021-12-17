@@ -29,12 +29,22 @@ body{
     border-bottom: 4px solid black;
 }
 
+
+
 .content{
     /* box-sizing: border-box; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.fav-container p{
+    
+    color: red;
+    margin:auto;
+    font-size: 1.5rem;
+}
+
 .fa-mask{
     color: rgb(44, 151, 116);
     font-size: 2rem;
@@ -155,9 +165,18 @@ a{
     justify-content: center;
     background-color: rgb(2, 2, 1);
   }
-  
+  .fav-container{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .back {
     display: block;
+    left: 0px;
+    color: crimson;
+  }
+
+  .fav-container .back {
+    display:block;
     left: 0px;
     color: crimson;
   }
