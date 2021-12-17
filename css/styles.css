@@ -31,7 +31,7 @@ body{
 
 
 
-.content{
+.search-page{
     /* box-sizing: border-box; */
     display: flex;
     flex-wrap: wrap;
@@ -175,10 +175,18 @@ a{
     color: crimson;
   }
 
-  .fav-container .back {
+  .fav-container .back{
     display:block;
     left: 0px;
     color: crimson;
+  }
+
+  .fav-container .p_fav{
+      /* display: flex; */
+      display: block;
+      margin: 0;
+      height: 3rem;
+      width: 100vw;
   }
   .M-name {
     text-align: center;

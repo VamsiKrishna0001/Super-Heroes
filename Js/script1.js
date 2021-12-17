@@ -1,117 +1,126 @@
 
 let heading = document.getElementsByClassName('header');
-let main = document.getElementsByClassName('content')[0];
-const input = document.getElementById('input');
+let searchPage = document.getElementsByClassName('search-page')[0];
+let input = document.getElementById('input');
 let search = document.getElementById('search');
 let fav = document.getElementsByClassName('fa-heart')[0];
 let home = document.getElementsByClassName('fa-mask')[0];
 let fav_container = document.getElementsByClassName('fav-container')[0];
+
+//Storing favorites  in an array with character id
 let favArr =[];
-let bFromfav=[];
-let favName =[];
 
-// home.addEventListener('click',()=>{
+// Storing Modified favorites that are removed in favorites.
+let MfavArr=[];
 
-//     heading[0].setAttribute('style','height: 100vh');
-//     var f_line = document.getElementsByClassName('F-line')[0];
-//     f_line.setAttribute("style"," margin: 5px 0; width: 100vw;");
-//     fav.addEventListener('click',favorites);
+//To go to the home page
+function refreshPage(){
+    window.location.reload();
+} 
 
-// },true);
-
-// home.removeEventListener('click',()=>{
-//     heading[0].setAttribute('style','height: 10vh');
-// var f_line = document.getElementsByClassName('F-line')[0];
-// f_line.setAttribute("style"," margin: 5px 0; width: 100vw;");
-// fav.addEventListener('click',favorites);
-// },true);
-
+//To View the Favorites that are stored
 fav.addEventListener('click',favorites);
-var retV;
+
+
 function favorites(){
     
+    //To go to the Home Page
+    home.addEventListener('click',refreshPage);
+
+    //To inherit the Moving the header to top 
     searchImg();
-    main.style.display = 'none';
+
+    searchPage.style.display = 'none';
     fav_container.style.display='flex';
+
+    //f_line Border under the header section 
     var f_line = document.getElementsByClassName('F-line')[0];
     f_line.setAttribute("style"," margin: 5px 0; width: 100vw; border-bottom: 4px solid black;");
 
-    // var back = document.createElement('h1');
-    // var b_icon=document.createElement('i');
-    // b_icon.setAttribute("class","fas fa-backward");
-    // back.setAttribute('class','back');
-    // back.appendChild(b_icon);
-    // fav_container.appendChild(back);
-    // back.addEventListener('click',()=>{
-    //      //.remove();
-    //     fav_container.style.display='none';
-    //         main.style.display = 'flex';
-    //     });
+    // To check whether the fav are added or not.
     if(favArr.length == 0){
-    //    console.log('yes');
-        console.log(fav_container.childNodes.length);
-       if(fav_container.childNodes.length>3){
-       fav_container.removeChild(fav_container.childNodes[3]);
-       fav_container.removeChild(fav_container.childNodes[3]);
-       console.log("back p");
-       }
+    // To remove the repeated elements   
+        if(fav_container.childNodes.length>3){
+            fav_container.removeChild(fav_container.childNodes[3]);
+            fav_container.removeChild(fav_container.childNodes[3]);
+        }
+    
+    // To go back to the search page    
         var back = document.createElement('h1');
         var b_icon=document.createElement('i');
         b_icon.setAttribute("class","fas fa-backward");
         back.setAttribute('class','back');
         back.appendChild(b_icon);
         fav_container.appendChild(back);
-        back.addEventListener('click',()=>{
-            if(favArr.length!=0){
-                p.remove();
-            }
-        fav_container.style.display='none';
-        main.style.display = 'flex';
-       });
 
-       var p = document.createElement('p');
-       p.innerHTML = "You Have No Favorites";
-       fav_container.appendChild(p);
-       search.addEventListener('click',()=>{
-        // heroes.remove();
+    // To remove elements after going to the search-page;    
+        back.addEventListener('click',()=>{
+                back.remove();
+                p.remove();
+        fav_container.style.display='none';
+        searchPage.style.display = 'flex';
+        });
+
+
+        var p = document.createElement('p');
+        p.innerHTML = "You Have No Favorites";
+        fav_container.appendChild(p);
+
+    // When searching from the favorites as to add the favorites.    
+        search.addEventListener('click',()=>{
         p.remove();
         fav_container.style.display = 'none';
-        main.style.display = 'flex';
-    })
-    }else{
-        if(fav_container.childNodes.length>4){
-            fav_container.childNodes[4].remove();
+        searchPage.style.display = 'flex';
+        });
+
+    }
+    else{
+
+    // To remove the repeated elements ..   
+        if(fav_container.childNodes.length>3){
+            if(fav_container.childNodes.length == 4){
+                fav_container.removeChild(fav_container.childNodes[3]);
+            }else{
+                fav_container.removeChild(fav_container.childNodes[3]);
+                fav_container.removeChild(fav_container.childNodes[3]);
+            }
         }
-        
+    
+        var p = document.createElement('p');
+        p.setAttribute("class","p_fav");
+        p.innerHTML = "Your Favorites";
+        fav_container.appendChild(p);
+
+    // Creating the Heroes container where all the heroes can be shown
         let heroes = document.createElement('div');
         heroes.setAttribute('class','heroes');
         fav_container.appendChild(heroes);
-        console.log(fav_container);
-      //  var arr =[];
-        
+    
+    // To remove the duplicates from the favorites..    
         let uniquefav = [...new Set(favArr)];
-        console.log(favArr);
-        console.log(uniquefav);
         favArr = uniquefav;
-        console.log("after:"+favArr);
+        MfavArr=favArr;
         
-
+    // To Get the Images,details from api through using character id that is stored in array.  
         for(var f =0;f<uniquefav.length;f++){
-           
             ajax(f);
         }
+
+    //To Request the server and Load the page in Favorites    
         function ajax(i){
-            console.log(i);
-            console.log( uniquefav[i]);
+
             var xhreq = new XMLHttpRequest();
+
             xhreq.onload = ()=>{
+
                 var resJson = JSON.parse(xhreq.response);
-                console.log(resJson);
+            //To store image Url from the id in array..            
                 var imageURL = resJson.image.url;
                 const hero = document.createElement('div');
                 hero.setAttribute("class",'heros');
                 heroes.appendChild(hero);
-                //For images
+
+            //For showing images
                 var container =document.createElement('div');
                 container.setAttribute("class",'images');
                 hero.appendChild(container);
@@ -119,38 +128,48 @@ function favorites(){
                 img.setAttribute("src",imageURL);
                 img.setAttribute("alt","...");
                 container.appendChild(img);
-                //for names
+
+            //for showing names
                 const name = resJson.name;
                 const p = document.createElement('p');
                 p.innerHTML = name;
                 container.appendChild(p);
-                // for info
+
+            // for showing information..
                 const info = document.createElement('p');
-              
                 info.setAttribute("class",'info');
                 info.setAttribute("id",i);
                 container.appendChild(info);
-                
+
                 const link = document.createElement('a');
-                // link.setAttribute("href",'');
                 link.innerHTML="About";
                 info.appendChild(link);
+            // To create unfav icon    
                 var span_icon = document.createElement('span');
                 container.appendChild(span_icon);
                 var fav_icon = document.createElement('i');
                 fav_icon.setAttribute("class",'fas fa-heart favrt');
                 span_icon.appendChild(fav_icon);
+
+            // for removing from favorites
                 fav_icon.addEventListener('click',()=>{
-                  info.parentNode.parentNode.remove();
-                  console.log(i);
-                  uniquefav.splice(i,1);
-                })
+                    info.parentNode.parentNode.remove();
+                    uniquefav.splice(i,1);
+                    favArr= uniquefav;
+                    MfavArr = favArr;
+                // if we delete all the favs in array we show they are no favs
+                    if(uniquefav.length == 0){
+                        document.getElementsByClassName('p_fav')[0].innerHTML="You have no Favorites";
+                    }
+                });
+
+            //To search from favorites
                 search.addEventListener('click',()=>{
                     heroes.remove();
-                    
+                    p.remove();
                     fav_container.style.display = 'none';
-                    main.style.display = 'flex';
-                })
+                    searchPage.style.display = 'flex';
+                });
 
                 info.addEventListener('click',()=>{
                     //Hide
@@ -308,7 +327,6 @@ function favorites(){
                         fav_container.style.display='flex';
                     });
                 });
-
             }
                 xhreq.open('get','https://www.superheroapi.com/api.php/2980995878784118/'+uniquefav[i],true);
                 xhreq.send();
@@ -319,27 +337,28 @@ function favorites(){
 }
 
 function searchImg(){
+    home.addEventListener('click',refreshPage);
     console.log(input.value);
     console.log(heading[0].getAttribute('style'));
     if(heading[0].getAttribute('style') == 'height: 100vh;'){
         heading[0].setAttribute('style','height: 10vh');
         const border = document.createElement('div');
         border.setAttribute("class","line");
-        main.appendChild(border);
+        searchPage.appendChild(border);
     }
 }
 search.addEventListener('click',()=>{
     fav_container.display='none';
-    console.log(main.childNodes);
-    if(main.childNodes.length>2){
-        console.log(main.childNodes);
-        main.childNodes[2].remove();
+    console.log(searchPage.childNodes);
+    if(searchPage.childNodes.length>2){
+        console.log(searchPage.childNodes);
+        searchPage.childNodes[2].remove();
     }
 
     let heroes = document.createElement('div');
     heroes.setAttribute('class','heroes');
-    main.appendChild(heroes);
-    console.log(main);
+    searchPage.appendChild(heroes);
+    console.log(searchPage);
 
     var xhreq = new XMLHttpRequest();
     xhreq.onload = ()=>{
@@ -380,13 +399,31 @@ search.addEventListener('click',()=>{
             var fav_icon = document.createElement('i');
             fav_icon.setAttribute("class",'fas fa-heart favrt');
             span_icon.appendChild(fav_icon);
+            var getid = info.getAttribute('id');
+            const iId = resJson.results[getid].id;
+            for(var n =0;n<MfavArr.length;n++){
+                if(MfavArr[n]== iId){
+                    console.log("loop :" + iId+" "+ MfavArr[n]);
+                    console.log(getid);
+                        document.getElementsByClassName('favrt')[getid].style.color='Red';
+                }
+            }
+            // if(MfavArr.length != 0){
+            //     for(var n =0;n<MfavArr.length;n++){
+            //         if(MfavArr[n]== iId){
+                        // console.log("loop :" + iId+" "+ MfavArr[n]);
+                        // document.getElementsByClassName('favrt')[getid].style.color='White';
+                        // MfavArr.splice(n,1);
+            //         }
+            //     }
+            // }
+            
             // Favoritess Storing
             fav_icon.addEventListener('click',()=>{
                 console.log("Yes Clicked");
                 var getid = info.getAttribute('id');
+                const iId = resJson.results[getid].id;
                 document.getElementsByClassName('favrt')[getid].style.color='blue';
-                const iId = resJson.results[getid].id
-                favName.push(input.value);
                 favArr.push(iId);
                 console.log(iId);
             })
