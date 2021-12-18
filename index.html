@@ -8,45 +8,55 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Gravitas+One&family=Rajdhani:wght@500&family=Shojumaru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Gravitas+One&family=Rajdhani:wght@500&family=Shojumaru&family=Vidaloka&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
   </head>
   <body>
-    <div class="header" style="height: 100vh;">
+
+    <div class="header " style="height: 100vh;">
       <div class="heading">
         <h1>
-          <span><i class="fas fa-mask"></i></span> Super Her<span><i class="far fa-heart"></i></span>es
+          <span><i class="fas fa-mask"></i></span> Super Her<span><i class="fas fa-heart favH"></i></span>es
         </h1>
       </div>
+
+      <!-- To Search The Required Hero -->
       <div class="search-box">
-        <form action="">
           <input type="text"  id="input" placeholder="Search SuperHeroes.." />
           <button  
             type="button" 
             onclick="searchImg()"
             id ="search" >
-           <i class="fas fa-search"  ></i>
+           <i class="fas fa-search"></i>
              </i>
-            </a>
+           </a>
           </button>
-        </form>
       </div>
+
+      <div class="results" style="position: relative; top:0px;">
+        <!-- <ul>
+         
+        </ul> -->
+      </div>
+      
       
     </div>
 
-    <div class = "search-page">
-    </div>
+    <!--   For Showing the searched images  -->
+    <div class = "search-page"></div>
 
-    <div class="individual-content">
-    </div>
+    <!--  For Showing Individual Information  -->
+    <div class="individual-content"></div>
+
+    <!--  For Showing Favorites That are Saved -->
     <div class="fav-container">
       <div class="F-line"></div>
     </div>
 
    
-    <script src="/Js/script1.js"></script>
+    <script src="/Js/script.js"></script>
   </body>
 </html>
