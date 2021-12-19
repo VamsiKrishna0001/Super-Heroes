@@ -375,6 +375,8 @@ function favorites(){
                     search.onclick = ()=>{
                       cont.remove();
                       heading1.classList.remove("suggestions");
+
+                    //To bring back the header border to its back posiiton  
                       if(heading[0].getAttribute('style') == 'height: 30vh'){
                         heading[0].setAttribute('style','height: 10vh');
                       }
@@ -411,6 +413,8 @@ function searchImg(){
         border.setAttribute("class","line");
         searchPage.appendChild(border);
     }
+      //To bring back the header border to its initial posiiton
+
     if(heading[0].getAttribute('style') == 'height: 30vh'){
       heading[0].setAttribute('style','height: 10vh');
     }
@@ -680,6 +684,7 @@ search.addEventListener('click',()=>{
                 search.onclick = ()=>{
                   cont.remove();
                   heading1.classList.remove("suggestions");
+                //To bring back the header border to its back posiiton  
                   if(heading[0].getAttribute('style') == 'height: 30vh'){
                     heading[0].setAttribute('style','height: 10vh');
                   }
