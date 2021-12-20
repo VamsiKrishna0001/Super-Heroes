@@ -265,6 +265,7 @@ a {
   /* width: 600px; */
   min-width: 600px;
   height: 100vh;
+  display: inline-table;
   /* width: 80%; */
   justify-content: center;
   background-color: rgb(2, 2, 1);
@@ -304,7 +305,7 @@ a {
   width: 70%;
 }
 
-.information .d-content li {
+.cont .information .d-content li {
   display: flex;
   color: aliceblue;
   /* padding: 1px; */
@@ -318,12 +319,12 @@ summary:hover {
   background: #107b9598;
 }
 
-details {
+.cont details {
   border-radius: 4px;
   padding: 0.5em 0.5em 0;
 }
 
-details > summary {
+.cont details > summary {
   padding: 1rem;
   font-size: 1.3rem;
   cursor: pointer;
@@ -331,7 +332,7 @@ details > summary {
   color: darkturquoise;
 }
 
-.d-content {
+.cont .d-content {
   font-size: 1.2rem;
   padding: 1rem 1.5rem;
 }
@@ -419,6 +420,7 @@ h1 .fa-heart {
     min-width: 300px;
     max-width: 300px;
     height: 100vh;
+    display: inline-table;
     justify-content: center;
     background-color: rgb(2, 2, 1);
   }
@@ -428,12 +430,12 @@ h1 .fa-heart {
     font-size: 1.2rem;
   }
 
-  .d-content {
+  .cont .d-content {
     font-size: 0.9rem;
     padding: 1rem 1.5rem;
   }
 
-  details > summary {
+  .cont details > summary {
     font-size: 0.9rem;
     padding: 0.5rem;
   }
@@ -464,6 +466,7 @@ h1 .fa-heart {
     min-width: 300px;
     max-width: 300px;
     height: 100vh;
+    display: inline-table;
     justify-content: center;
     background-color: rgb(2, 2, 1);
   }
@@ -498,18 +501,19 @@ h1 .fa-heart {
     flex-wrap: wrap;
     width: 80%;
     justify-content: center;
+    display: inline-table;
     height: 100vh;
     background-color: rgb(2, 2, 1);
   }
 
-  summary {
+  .cont summary {
     display: flex;
     margin: auto;
     /* justify-content: center; */
     width: 350px;
   }
 
-  .information .d-content li {
+  .cont .information .d-content li {
     display: flex;
     color: aliceblue;
     width: 350px;
@@ -525,5 +529,10 @@ h1 .fa-heart {
     justify-content: space-evenly;
     width: 350px;
     height: 430px;
+  }
+
+  .cont .d-content {
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
   }
 }
