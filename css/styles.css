@@ -418,6 +418,7 @@ h1 .fa-heart {
     flex-wrap: wrap;
     min-width: 300px;
     max-width: 300px;
+    height: 100vh;
     justify-content: center;
     background-color: rgb(2, 2, 1);
   }
@@ -462,6 +463,7 @@ h1 .fa-heart {
     flex-wrap: wrap;
     min-width: 300px;
     max-width: 300px;
+    height: 100vh;
     justify-content: center;
     background-color: rgb(2, 2, 1);
   }
@@ -496,6 +498,7 @@ h1 .fa-heart {
     flex-wrap: wrap;
     width: 80%;
     justify-content: center;
+    height: 100vh;
     background-color: rgb(2, 2, 1);
   }
 
