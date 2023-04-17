@@ -9,7 +9,7 @@ it is purely with vanilla javascript, HTML, CSS.
 - Ajax is used to fetch data from the SuperHero [API](https://superheroapi.com/index.html).
 - Add responsiveness to the webpage.
 
-You can visit the webpage [here](https://usernamezero.github.io/Super-Heroes/).
+You can visit the webpage [here](https://vamsikrishna0001.github.io/Super-Heroes/).
 
 ## Features
 
